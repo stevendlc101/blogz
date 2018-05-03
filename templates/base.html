@@ -3,8 +3,9 @@
     <head>
         <title>{{title}}</title>
         <br>
-        <a href="/blog">My Blog</a>
+        <a href="/blog">All Posts</a>
         <a href="/newpost">New Post</a>
+        <a href="/">Home</a>
         <style type="text/css">
             .error {
                 color: red;
@@ -14,6 +15,21 @@
 
 
     <body>
+
+        <div>
+            <p style="text-align:right;">
+            <a href="/login">Log-in</a><br><a href='/logout'>Log-out</a></p>
+            <p style="text-align:right;">
+            </p>
+        </div>
+    
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+            {% for category,message in messages %}
+                <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+    </ul>
+        {% endwith %}
 
         {% block content %}
         {% endblock %}
